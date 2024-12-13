@@ -4,12 +4,51 @@ import ReactFlow, {
   Background,
   Controls,
   BaseEdge,
-  Edge,
-  Node,
-  MarkerType,
-  EdgeProps,
   getBezierPath,
 } from 'reactflow'
+
+// Define types locally
+type Edge = {
+  id: string
+  source: string
+  target: string
+  type?: string
+  animated?: boolean
+  label?: string
+  style?: any
+  markerEnd?: any
+  sourceHandle?: string
+  targetHandle?: string
+  labelStyle?: any
+  labelBgStyle?: any
+}
+
+type Node = {
+  id: string
+  type?: string
+  position: { x: number; y: number }
+  data: any
+}
+
+type EdgeProps = {
+  id: string
+  sourceX: number
+  sourceY: number
+  targetX: number
+  targetY: number
+  sourcePosition?: string
+  targetPosition?: string
+  style?: any
+  markerEnd?: any
+  label?: string
+  labelStyle?: any
+  labelBgStyle?: any
+}
+
+const MarkerType = {
+  ArrowClosed: 'arrowclosed',
+} as const
+
 import 'reactflow/dist/style.css'
 import { CustomNode } from './custom-node'
 import { useCallback, useMemo } from 'react'

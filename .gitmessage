@@ -1,0 +1,15 @@
+# [类型]: 简短的描述 (50 个字符以内)
+# 类型可以是: feat, fix, docs, style, refactor, test, chore
+
+# 详细描述 (72 个字符以内)
+# - 为什么需要这个改动?
+# - 如何解决的问题?
+# - 有什么副作用吗?
+
+# 相关 issue (可选)
+# Fixes #123, Relates to #456
+
+# 注意事项 (可选)
+# - Breaking changes
+# - 需要注意的地方
+# - 后续工作 

@@ -1,6 +1,13 @@
 'use client'
 
-import { Handle, Position } from 'reactflow'
+import { Handle } from 'reactflow'
+
+const Position = {
+  Top: 'top',
+  Right: 'right',
+  Bottom: 'bottom',
+  Left: 'left',
+} as const
 
 interface CustomNodeProps {
   data: {
