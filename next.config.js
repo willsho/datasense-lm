@@ -19,9 +19,6 @@ const nextConfig = {
   // 生产环境配置
   productionBrowserSourceMaps: true,
   
-  // 启用 SWC 压缩
-  swcMinify: true,
-  
   // 环境变量配置
   env: {
     PUBLIC_PATH: process.env.PUBLIC_PATH || '',

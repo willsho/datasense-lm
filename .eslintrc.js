@@ -2,7 +2,14 @@
 module.exports = {
   root: true,
   extends: [
-    '@wmfe/eslint-config-mt/eslintrc.react.js',
-    '@wmfe/eslint-config-mt/eslintrc.typescript-react.js'
-  ]
+    'next/core-web-vitals',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended'
+  ],
+  parser: '@typescript-eslint/parser',
+  plugins: ['@typescript-eslint'],
+  rules: {
+    '@typescript-eslint/no-unused-vars': 'error',
+    '@typescript-eslint/no-explicit-any': 'warn'
+  }
 }

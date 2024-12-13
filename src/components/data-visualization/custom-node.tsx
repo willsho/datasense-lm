@@ -9,6 +9,8 @@ const Position = {
   Left: 'left',
 } as const
 
+type PositionType = typeof Position[keyof typeof Position]
+
 interface CustomNodeProps {
   data: {
     label: string
