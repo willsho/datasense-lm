@@ -1,55 +1,18 @@
 'use client'
 
-import ReactFlow, {
+import {
+  ReactFlow,
   Background,
   Controls,
   BaseEdge,
   getBezierPath,
-} from 'reactflow'
+  MarkerType,
+  Edge,
+  Node,
+  EdgeProps,
+} from '@xyflow/react'
 
-// Define types locally
-type Edge = {
-  id: string
-  source: string
-  target: string
-  type?: string
-  animated?: boolean
-  label?: string
-  style?: any
-  markerEnd?: any
-  sourceHandle?: string
-  targetHandle?: string
-  labelStyle?: any
-  labelBgStyle?: any
-}
-
-type Node = {
-  id: string
-  type?: string
-  position: { x: number; y: number }
-  data: any
-}
-
-type EdgeProps = {
-  id: string
-  sourceX: number
-  sourceY: number
-  targetX: number
-  targetY: number
-  sourcePosition?: string
-  targetPosition?: string
-  style?: any
-  markerEnd?: any
-  label?: string
-  labelStyle?: any
-  labelBgStyle?: any
-}
-
-const MarkerType = {
-  ArrowClosed: 'arrowclosed',
-} as const
-
-import 'reactflow/dist/style.css'
+import '@xyflow/react/dist/style.css'
 import { CustomNode } from './custom-node'
 import { useCallback, useMemo } from 'react'
 import { CSVData } from '@/types/csv'
@@ -136,91 +99,91 @@ export function UserFlowChart({ data }: UserFlowChartProps) {
       id: 'reactivated',
       type: 'custom',
       position: { x: 50, y: 20 },
+      width: 200,
+      height: 120,
       data: {
         label: '重新激活用户',
         description: '(首次回访)',
         value: getMetricValue('reactivated_user'),
         color: 'bg-green-100',
-        width: 200,
-        height: 120,
       },
     },
     {
       id: 'new',
       type: 'custom',
       position: { x: 400, y: 20 },
+      width: 200,
+      height: 120,
       data: {
         label: '新用户',
         description: '(首次使用应用)',
         value: getMetricValue('new_user'),
         color: 'bg-green-100',
-        width: 200,
-        height: 120,
       },
     },
     {
       id: 'resurrected',
       type: 'custom',
       position: { x: 750, y: 20 },
+      width: 200,
+      height: 120,
       data: {
         label: '复活用户',
         description: '(首日回访)',
         value: getMetricValue('resurrected_user'),
         color: 'bg-green-100',
-        width: 200,
-        height: 120,
       },
     },
     {
       id: 'current',
       type: 'custom',
       position: { x: 420, y: 210 },
+      width: 280,
+      height: 140,
       data: {
         label: '当前用户',
         description: '(今日活跃且过去7天内至少活跃1次)',
         value: getMetricValue('current_user'),
         color: 'bg-blue-100',
-        width: 280,
-        height: 140,
       },
     },
     {
       id: 'at-risk-wau',
       type: 'custom',
       position: { x: 100, y: 400 },
+      width: 280,
+      height: 100,
       data: {
         label: '周活跃用户流失风险',
         description: '(今日不活跃，但过去1-6天活跃)',
         value: getMetricValue('at_risk_waus'),
         color: 'bg-orange-100',
-        width: 280,
-        height: 100,
       },
     },
     {
       id: 'at-risk-mau',
       type: 'custom',
       position: { x: 100, y: 580},
+      width: 450,
+      height: 100,
       data: {
         label: '月活跃用户流失风险',
         description: '(今日不活跃，过去1-6天不活跃，但过去7-29天活跃)',
         value: getMetricValue('at_risk_maus'),
         color: 'bg-pink-100',
-        width: 450,
-        height: 100,
       },
     },
     {
       id: 'dead',
       type: 'custom',
       position: { x: 100, y: 750 },
+      width: 600,
+      height: 100,
       data: {
         label: '流失用户',
         description: '(今日及过去29天不活跃)',
         value: getMetricValue('dead_users'),
         color: 'bg-red-100',
-        width: 600,
-        height: 100,
       },
     },
   ], [getMetricValue])

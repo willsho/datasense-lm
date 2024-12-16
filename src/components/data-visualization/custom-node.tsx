@@ -1,15 +1,5 @@
-'use client'
-
-import { Handle } from 'reactflow'
-
-const Position = {
-  Top: 'top',
-  Right: 'right',
-  Bottom: 'bottom',
-  Left: 'left',
-} as const
-
-type PositionType = typeof Position[keyof typeof Position]
+import { useCallback } from 'react';
+import { Handle, Position } from '@xyflow/react';
 
 interface CustomNodeProps {
   data: {
@@ -18,15 +8,12 @@ interface CustomNodeProps {
     description?: string
     color?: string
     textColor?: string
-    width?: number
-    height?: number
   }
+  width?: number
+  height?: number
 }
 
-export function CustomNode({ data }: CustomNodeProps) {
-  const width = data.width || 240
-  const height = data.height || 100
-
+export function CustomNode({ data, width = 240, height = 100 }: CustomNodeProps) {
   return (
     <div
       className={`px-4 py-3 rounded-md shadow-md border ${data.color || 'bg-white'}`}
