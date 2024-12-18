@@ -1,0 +1,17 @@
+metric_name,metric_value
+SURR,5.55
+current_user,7612.0
+MAU流失率,98.29
+resurrected_user,2614.0
+reactivated_user,3825.0
+new_user,2096.0
+WAU流失率,93.32
+RURR,11.06
+NURR,5.63
+dead_users,1690673.0
+iWAURR,6.68
+CURR,35.33
+at_risk_maus,223056.0
+at_risk_waus,74161.0
+重新激活率,1.71
+复活率,0.15 

@@ -1,6 +1,10 @@
 export interface CSVData {
-  headers: string[]
-  rows: Record<string, string | number>[]
+  columns: string[]
+  rows: Array<{
+    metric_name: string
+    metric_value: number
+    [key: string]: any
+  }>
 }
 
 export interface ChartData {

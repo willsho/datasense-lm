@@ -1,0 +1,17 @@
+metric_name,metric_value
+reactivated_user,100
+new_user,500
+resurrected_user,200
+current_user,1000
+at_risk_waus,300
+at_risk_maus,400
+dead_users,2000
+RURR,60
+SURR,40
+CURR,80
+NURR,70
+iMAURR,30
+iWAURR,25
+WAU流失率,20
+MAU流失率,15
+复活率,10 
