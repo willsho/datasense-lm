@@ -2,7 +2,7 @@
 
 import React, { useCallback, useState } from 'react'
 import { useCSVStore } from '@/lib/store/csv-store'
-import { parseCSVFile } from '@/lib/utils'
+import { parseFile } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { Upload } from 'lucide-react'
 
@@ -12,19 +12,20 @@ export function UploadZone() {
   const fileInputRef = React.useRef<HTMLInputElement>(null)
 
   const handleFile = useCallback(async (file: File) => {
-    if (!file.name.endsWith('.csv')) {
-      setError('请上传 CSV 文件')
+    const fileType = file.name.split('.').pop()?.toLowerCase()
+    if (!['csv', 'xlsx', 'xls'].includes(fileType || '')) {
+      setError('请上传 CSV 或 Excel (XLSX/XLS) 文件')
       return
     }
 
     try {
       setLoading(true)
       setError(null)
-      const data = await parseCSVFile(file)
+      const data = await parseFile(file)
       setCsvData(data)
     } catch (error) {
       setError('文件解析失败，请确保文件格式正确')
-      console.error('CSV parsing error:', error)
+      console.error('File parsing error:', error)
     } finally {
       setLoading(false)
     }
@@ -74,15 +75,16 @@ export function UploadZone() {
         type="file"
         ref={fileInputRef}
         className="hidden"
-        accept=".csv"
+        accept=".csv,.xlsx,.xls"
         onChange={onFileInputChange}
       />
       <Upload className="mx-auto h-12 w-12 text-gray-400" />
       <div className="mt-4">
         <Button type="button" variant="outline" className="mx-auto">
-          选择 CSV 文件
+          选择文件
         </Button>
-        <p className="mt-2 text-sm text-gray-500">或将文件拖放到此处</p>
+        <p className="mt-2 text-sm text-gray-500">支持 CSV 和 Excel (XLSX/XLS) 格式</p>
+        <p className="mt-1 text-xs text-gray-400">将文件拖放到此处，或点击选择</p>
       </div>
     </div>
   )
